@@ -1,36 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import BackendApiUrl from "../api/BackendApiUrl";
-import InputSelect from "../component/InputSelect";
-import SectionTitle from "../component/SectionTitle";
-import { toast } from "react-hot-toast";
-import Loading from "../layout/Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import BackendApiUrl from "../../api/BackendApiUrl";
+import SectionTitle from "../../component/SectionTitle";
+import auth from "../../firebase.init";
+import Loading from "../../layout/Loading";
 
 const Payment = () => {
   const count = 50;
+  const [user] = useAuthState(auth);
   const [page, setPage] = useState(0);
   const size = 10;
   const pages = Math.ceil(count / size);
-  const {
-    data: payments,
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: payments, isLoading } = useQuery({
     queryKey: ["payments"],
-    queryFn: async () => await BackendApiUrl.get(`/users`),
+    queryFn: async () =>
+      await BackendApiUrl.get(`/users/?email=${user?.email}`),
   });
   if (isLoading) {
     return <Loading />;
   }
-  const paymentStatus = (id) => {
-    // ============ BACKEND Put API ==============
-    BackendApiUrl.put(`/payment/${id}`).then((data) => {
-      if (data) {
-        refetch();
-        toast.success("Successfully update Payment Status");
-      }
-    });
-  };
+
   return (
     <div className="py-10">
       <SectionTitle>All Payments</SectionTitle>
@@ -53,18 +43,7 @@ const Payment = () => {
                 <td>{payment.name}</td>
                 <td>{payment.username}</td>
                 <td>500</td>
-                <td>
-                  <InputSelect
-                    onChange={() => paymentStatus(payment.id)}
-                    className="select select-bordered bg-transparent select-xs"
-                  >
-                    <option disabled selected value="padding">
-                      Padding
-                    </option>
-                    <option value="approved">Approved</option>
-                    <option value="success">Success</option>
-                  </InputSelect>
-                </td>
+                <td>compleate</td>
               </tr>
             ))}
           </tbody>

@@ -6,7 +6,6 @@ import RequiredManager from "./authentication/RequiredManager";
 import Header from "./layout/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Payment from "./pages/Payment";
 import Application from "./pages/application/Application";
 import ApplicationDetails from "./pages/application/ApplicationDetails";
 import NoticeAll from "./pages/notification/NoticeAll";
@@ -18,6 +17,7 @@ import ProjectDetails from "./pages/project/ProjectDetails";
 import Projects from "./pages/project/Projects";
 import Requisition from "./pages/requisition/Requisition";
 import RequisitonDetails from "./pages/requisition/RequisitonDetails";
+import Payment from "./pages/payment/Payment";
 const queryClient = new QueryClient();
 function App() {
   return (
