@@ -1,11 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
-import Button from "../../component/Button";
+import BackendApiUrl from "../../api/BackendApiUrl";
 import InputSelect from "../../component/InputSelect";
 import SectionTitle from "../../component/SectionTitle";
-import BackendApiUrl from "../../api/BackendApiUrl";
-import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
 import Loading from "../../layout/Loading";
 
 const Projects = () => {
@@ -87,9 +86,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center mt-10">
-        <Button path={"/projectadd"}>Add Project</Button>
-      </div>
+      
     </div>
   );
 };

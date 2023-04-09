@@ -5,6 +5,7 @@ import BackendApiUrl from "../../api/BackendApiUrl";
 import SectionTitle from "../../component/SectionTitle";
 import auth from "../../firebase.init";
 import Loading from "../../layout/Loading";
+import Button from "../../component/Button";
 
 const Payment = () => {
   const count = 50;
@@ -23,7 +24,7 @@ const Payment = () => {
 
   return (
     <div className="py-10">
-      <SectionTitle>All Payments</SectionTitle>
+      <SectionTitle>All My Payments Request</SectionTitle>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head */}
@@ -60,6 +61,9 @@ const Payment = () => {
             </button>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center mt-10">
+        <Button path={"/paymentFrom"}>Payment From</Button>
       </div>
     </div>
   );

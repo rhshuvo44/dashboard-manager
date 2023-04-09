@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BackendApiUrl from "../../api/BackendApiUrl";
+import Button from "../../component/Button";
 import SectionTitle from "../../component/SectionTitle";
 import Loading from "../../layout/Loading";
 
@@ -62,6 +63,9 @@ const Requisition = () => {
             </button>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center mt-10">
+        <Button path={"/requisitionFrom"}>Requisition From</Button>
       </div>
     </div>
   );

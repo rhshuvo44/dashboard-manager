@@ -8,16 +8,18 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Application from "./pages/application/Application";
 import ApplicationDetails from "./pages/application/ApplicationDetails";
+import ApplicationFrom from "./pages/application/ApplicationFrom";
 import NoticeAll from "./pages/notification/NoticeAll";
 import NoticeDetails from "./pages/notification/NoticeDetails";
+import Payment from "./pages/payment/Payment";
 import Profile from "./pages/profile/Profile";
 import UpdateProfile from "./pages/profile/UpdateProfile";
-import ProjectAdd from "./pages/project/ProjectAdd";
 import ProjectDetails from "./pages/project/ProjectDetails";
 import Projects from "./pages/project/Projects";
 import Requisition from "./pages/requisition/Requisition";
+import RequisitionFrom from "./pages/requisition/RequisitionFrom";
 import RequisitonDetails from "./pages/requisition/RequisitonDetails";
-import Payment from "./pages/payment/Payment";
+import PaymentFrom from "./pages/payment/PaymentFrom";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -30,21 +32,24 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route element={<RequiredManager />}>
             <Route element={<Dashboard />}>
-              <Route path="/" element={<NoticeAll />} />
+              <Route path="/" element={<Projects />} />
               <Route path="/project" element={<Projects />} />
-              <Route path="/projectadd" element={<ProjectAdd />} />
+              <Route path="/noticeAll" element={<NoticeAll />} />
               <Route path="/projectDetails/:id" element={<ProjectDetails />} />
               <Route path="/payment" element={<Payment />} />
+              <Route path="/paymentFrom" element={<PaymentFrom />} />
               <Route path="/noticeAll" element={<NoticeAll />} />
               <Route path="/noticeDetails/:id" element={<NoticeDetails />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/updateProfile" element={<UpdateProfile />} />
               <Route path="/requisition" element={<Requisition />} /> 
+              <Route path="/requisitionFrom" element={<RequisitionFrom />} /> 
               <Route
                 path="/requisitonDetails/:id"
                 element={<RequisitonDetails />}
               />
               <Route path="/application" element={<Application />} />
+              <Route path="/applicationFrom" element={<ApplicationFrom />} />
               <Route
                 path="/applicationDetails/:id"
                 element={<ApplicationDetails />}

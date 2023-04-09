@@ -7,35 +7,44 @@ import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const ApplicationFrom = () => {
+const RequisitionFrom = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     //  =========== backend api===========================
-    const applicationFrom = {
+    const requisitionFrom = {
       email: user.email,
-      subject: data.subject,
+      projectName: data.projectName,
+      title: data.title,
       desciption: data.desciption,
     };
-    BackendApiUrl.post("/application", applicationFrom).then((data) => {
+    BackendApiUrl.post("/requisition", requisitionFrom).then((data) => {
       if (data) {
-        toast.success("Add Your application");
+        toast.success("Add Your requisition");
       } else {
-        toast.error("Faild to add Your application");
+        toast.error("Faild to add Your requisition");
       }
     });
   };
+
   return (
     <div className="card shadow-xl mt-10">
       <div className="card-body">
-        <SectionTitle> Application From</SectionTitle>
+        <SectionTitle> Requisition From</SectionTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
-            placeholder="Subject"
+            placeholder="Project Name"
             required
             className="input input-bordered w-full bg-transparent my-2"
-            {...register("subject")}
+            {...register("projectName")}
+          />
+          <input
+            type="text"
+            placeholder="Titile"
+            required
+            className="input input-bordered w-full bg-transparent my-2"
+            {...register("title")}
           />
           <textarea
             className="textarea textarea-bordered h-52 w-full bg-transparent my-2"
@@ -55,4 +64,4 @@ const ApplicationFrom = () => {
   );
 };
 
-export default ApplicationFrom;
+export default RequisitionFrom;

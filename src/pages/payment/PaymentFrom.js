@@ -1,13 +1,13 @@
 import React from "react";
-import Input from "../../component/Input";
 import SectionTitle from "../../component/SectionTitle";
-import BackendApiUrl from "../../api/BackendApiUrl";
+import Input from "../../component/Input";
 import { toast } from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import auth from "../../firebase.init";
+import BackendApiUrl from "../../api/BackendApiUrl";
 import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { useForm } from "react-hook-form";
 
-const ApplicationFrom = () => {
+const PaymentFrom = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -28,7 +28,7 @@ const ApplicationFrom = () => {
   return (
     <div className="card shadow-xl mt-10">
       <div className="card-body">
-        <SectionTitle> Application From</SectionTitle>
+        <SectionTitle> Payment Request From</SectionTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
@@ -55,4 +55,4 @@ const ApplicationFrom = () => {
   );
 };
 
-export default ApplicationFrom;
+export default PaymentFrom;

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Loading from "../../layout/Loading";
 import InputSelect from "../../component/InputSelect";
 import { toast } from "react-hot-toast";
+import Button from "../../component/Button";
 
 const Application = () => {
   const count = 89;
@@ -85,6 +86,9 @@ const Application = () => {
             </button>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center mt-10">
+        <Button path={"/applicationFrom"}>Application From</Button>
       </div>
     </div>
   );
